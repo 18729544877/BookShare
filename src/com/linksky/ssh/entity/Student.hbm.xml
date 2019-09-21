@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.linksky.vo">
+	<class name="Student">
+		<id name="studentId" column="student_id">
+			<generator class="identity" />
+		</id>
+	<property name="studentName" column="student_name"></property>
+	<property name="studentAge" column="student_age"></property>
+	<set name="courses" table="student_course_ref">
+	<key column="student_id"></key>
+	<many-to-many class="Course" column="course_id"></many-to-many>
+	</set>
+	
+	<one-to-one name="schoolRoll"></one-to-one>
+	</class>
+	
+</hibernate-mapping>

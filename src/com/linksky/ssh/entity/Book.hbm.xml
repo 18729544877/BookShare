@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.linksky.ssh.entity">
+	<class name="Book" table="book">
+		<id name="bookId" column="book_id">
+			<generator class="identity" />
+		</id>
+		<property name="bookName" column="book_name" />
+		<property name="bookType" column="book_type"></property>
+		<property name="bookIsbn" column="book_isbn"></property>
+		<property name="bookAuthor" column="book_author"></property>
+		<property name="bookPrice"  column="book_price" scale="2"></property>
+		<property name="bookPublisher" column="book_publisher"></property>
+		<property name="bookOperate" column="book_operate"></property>
+		<property name="bookReleaseDate" column="book_release_date"></property>
+		<many-to-one name="bookOwner" class="Vip"  column="book_owner"></many-to-one>
+		<property name="bookDesc" column="book_desc"></property>
+		<property name="bookFace" column="book_face"></property>
+	
+	</class>
+	
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.linksky.ssh.entity">
+	<class name="Admin" table="sys_admin">
+		<!-- <cache usage="read-write" /> -->
+		<id name="adminId" column="admin_id">
+			<generator class="identity" />
+		</id>
+		<property name="adminAccount" column="admin_account" />
+		<property name="adminPassword" column="admin_password"></property>
+		<property name="adminName" column="admin_name"></property>
+		<property name="adminLevel" column="admin_level"></property>
+		<property name="adminState" column="admin_state"></property>
+
+	</class>
+
+</hibernate-mapping>

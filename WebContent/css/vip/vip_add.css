@@ -1,0 +1,20 @@
+.form-group{
+height:42px;
+}
+.col-sm-2 {
+	float: left;
+}
+
+
+label {
+	width: 100px;
+	margin-top: 20px;
+}
+
+.form-control1 {
+	margin-top: 20px;
+}
+.sex{
+    display: block;
+    padding-top: 20px;
+}

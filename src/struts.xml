@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<!-- 默认的包 -->
+	<package name="default" extends="struts-default">
+		<global-results>
+			<result name="error">/error.jsp</result>
+			<result name="login">/admin/login.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+	</package>
+
+	<!-- 其他的继承默认包的包 -->
+	<package name="admin" namespace="/admin" extends="default">
+		<action name="*" class="com.linksky.ssh.action.AdminAction"
+			method="{1}">
+			<result name="{1}">{1}.jsp</result>
+			<result name="init" type="redirectAction">init</result>
+			<result name="index">index.jsp</result>
+			<result name="input">{1}.jsp</result>
+		</action>
+	</package>
+	<package name="menu" namespace="/menu" extends="default">
+		<action name="*" class="com.linksky.ssh.action.MenuAction"
+			method="{1}">
+
+			<result name="{1}">{1}.jsp</result>
+			<result name="save" type="redirectAction">list</result>
+			<result name="iddel" type="redirectAction">delete</result>
+			<result name="reupdate" type="redirectAction">update</result>
+
+		</action>
+	</package>
+	<package name="book" namespace="/book" extends="default">
+		<action name="*" class="com.linksky.ssh.action.BookAction"
+			method="{1}">
+			<result name="{1}">{1}.jsp</result>
+			<result name="addone" type="redirectAction">show</result>
+			<result name="backgo" type="redirectAction">back</result>
+			<result name="showTypeBook">showTypeBook.jsp</result>
+			<result name="borrowgodo" type="redirectAction">borrow</result>
+			<result name="deleteone" type="redirectAction">show</result>
+			<result name="updated" type="redirectAction">update</result>
+
+		</action>
+	</package>
+	<package name="dictionary" namespace="/dictionary" extends="default">
+		<action name="*" class="com.linksky.ssh.action.DictionaryAction"
+			method="{1}">
+
+			<result name="{1}">{1}.jsp</result>
+			<result name="no">add.jsp</result>
+			<result name="delgo" type="redirectAction">delete</result>
+			<result name="out" type="redirectAction">show</result>
+			<result name="updatedone" type="redirectAction">update</result>
+			<result name="list">update.jsp</result>
+		</action>
+	</package>
+	<package name="vip" namespace="/vip" extends="default">
+		<action name="*" class="com.linksky.ssh.action.VipAction"
+			method="{1}">
+			<result name="{1}">{1}.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="index">index.jsp</result>
+			<result name="init" type="redirectAction">init</result>
+			<result name="updone" type="redirectAction">update</result>
+			<result name="next" type="redirectAction">list</result>
+			<result name="deleteone" type="redirectAction">list</result>
+			<result name="viplogin">/vip/login.jsp</result>
+			<result name="findsome">look.jsp</result>
+		</action>
+	</package>
+</struts>

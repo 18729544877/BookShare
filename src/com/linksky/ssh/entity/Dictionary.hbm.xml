@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping package="com.linksky.ssh.entity">
+	<class name="Dictionary" table="sys_dictionary">
+		<id name="dictionaryId" column="dictionary_id">
+			<generator class="identity" />
+		</id>
+		<property name="dictionaryName" column="dictionary_name" />
+		<property name="dictionaryCode" column="dictionary_code"></property>
+		<property name="dictionaryType" column="dictionary_type"></property>
+		<property name="dictionaryTypeCode" column="dictionary_type_code"></property>
+		<property name="dictionaryOrder" column="dictionary_order"></property>
+	
+	</class>
+	
+</hibernate-mapping>

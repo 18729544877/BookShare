@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.linksky.ssh.entity">
+	<class name="Menu" table="sys_menu">
+		<id name="menuId" column="menu_id">
+			<generator class="identity" />
+		</id>
+		<property name="menuName" column="menu_name" />
+		<property name="menuUrl" column="menu_url"></property>
+		<property name="parentId" column="parent_id"></property>
+		<property name="menuType" column="menu_type"></property>
+		<property name="menuOrder" column="menu_order"></property>
+		<property name="menuCode" column="menu_code"></property>
+
+	</class>
+	
+</hibernate-mapping>

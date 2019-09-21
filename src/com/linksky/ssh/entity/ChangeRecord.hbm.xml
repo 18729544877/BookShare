@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.linksky.ssh.entity">
+	<class name="ChangeRecord" table="change_record">
+		<id name="changeId" column="change_id">
+			<generator class="identity" />
+		</id>
+		<property name="changeInVipId" column="change_in_vip_id" />
+		<property name="changeInBookId" column="change_in_book_id"></property>
+		<property name="changeOutVipId" column="change_out_vip_id"></property>
+		<property name="changeOutBookId" column="change_out_book_id"></property>
+		<property name="changeDate" column="change_date"></property>
+	
+	</class>
+	
+</hibernate-mapping>

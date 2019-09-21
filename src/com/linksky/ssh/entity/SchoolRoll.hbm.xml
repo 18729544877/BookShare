@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.linksky.vo">
+	<class name="SchoolRoll" table="school_roll">
+		<id name="rollId" column="roll_id">
+			<generator class="foreign">
+			<param name="property">student</param>
+			</generator> 
+			
+		</id>
+	<property name="rollNo" column="roll_no"></property>
+	<property name="joinSchool" column="join_school"></property>
+	<property name="joinDate" column="join_date"></property>
+     <one-to-one name="student" class="Student"></one-to-one> 
+	</class>
+	
+</hibernate-mapping>
