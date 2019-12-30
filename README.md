@@ -23,7 +23,9 @@ action(举例删除book)
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&  
 
 2.delete by bookId来删除某一条书籍记录。  
-点击删除--->删除指导id的记录--->查数据库返回所有的书籍：  
+点击删除--->删除指导id的记录--->查数据库返回所有的书籍：
+如图：
+![Image text](https://raw.githubusercontent.com/18729544877/bookshare/master/WebContent/help_image/book.png)
 <package name="book" namespace="/book" extends="default">   
 <action name="*" class="com.linksky.ssh.action.BookAction"    
 	method="{1}">  
