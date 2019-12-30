@@ -6,7 +6,8 @@
 2.数据库bookshare
 3.前端的使用jsp做的页面:
 
-流程：action(举例删除book)
+流程：  
+action(举例删除book)
 1.booklist展示所有的书籍:
 <c:forEach items="${bookList}" var="book">
   <tr>
