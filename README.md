@@ -14,7 +14,7 @@ action(举例删除book)
 2.delete by bookId来删除某一条书籍记录。  
 点击删除--->删除指导id的记录--->查数据库返回所有的书籍：
 如图：
-![Image text](https://raw.githubusercontent.com/18729544877/bookshare/master/WebContent/help_image/book.png) 
+![Image text](https://raw.githubusercontent.com/18729544877/bookshare/master/WebContent/help_image/book.png)  
 struts.xml找到namespace是book,下面是action为*，method是{1}。  
 表示的是acttion与method方法一致。进入action类BookAction:  
 public String delete() {  
