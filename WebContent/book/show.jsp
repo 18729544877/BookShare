@@ -55,11 +55,6 @@
 						<td>${book.bookAuthor }</td>
 						<td>${book.bookPrice }</td>
 						<td>${book.bookOperate }</td>
-						<%--   <td>${book.bookIsbn }</td>
-		               <td>${book.bookPublisher }</td>
-		              <td><fmt:formatDate pattern="yyyy-MM-dd" value="${book.bookReleaseDate }"></fmt:formatDate></td>
-		               
-		               <td>${book.bookFace}</td> --%>
 						<td><a href="book/delete?bookId=${book.bookId }">删除</a></td>
 					</tr>
 				</c:forEach>
