@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"> 
+<beans>
+  <bean name="/login" class="action.LoginAction" singleton="false">
+  <property name="loginService">
+    <ref bean="loginService" />
+  </property>
+  </bean>
+
+ <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+  <property name="driverClassName">
+   <value>com.mysql.jdbc.Driver</value>
+  </property>
+  <property name="url">
+   <value>jdbc:mysql://localhost:3306/bookshare</value>
+  </property>
+  <property name="username">
+   <value>root</value>
+  </property>
+  <property name="password">
+   <value>853234#@$!Devin</value>
+  </property>
+ </bean>
+
+ <bean id="sessionFactory"  class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+  <property name="dataSource">
+   <ref local="dataSource" />
+  </property>
+  <property name="mappingResources">
+   <list>
+    <value>com/linksky/ssh/entity/Vip.hbm.xml</value>
+    <value>com/linksky/ssh/entity/Dictionary.hbm.xml</value>
+    <value>com/linksky/ssh/entity/Book.hbm.xml</value>
+    <value>com/linksky/ssh/entity/Menu.hbm.xml</value>
+    <value>com/linksky/ssh/entity/BorrowRecord.hbm.xml</value>
+   </list>
+  </property>
+  <property name="hibernateProperties">
+   <props>
+    <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+    <prop key="hibernate.show_sql">true</prop>
+   </props>
+  </property>
+ </bean>
+
+ <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+  <property name="sessionFactory">
+   <ref local="sessionFactory" />
+  </property>
+ </bean>
+
+ <!-- <bean id="vipDao" class="com.linksky.ssh.dao.VipDao">
+  <property name="transactionManager">
+   <ref bean="transactionManager" />
+  </property>
+  <property name="target">
+   <ref local="loginService" />
+  </property>
+  <property name="transactionAttributes">
+   <props>
+    <prop key="save*">PROPAGATION_REQUIRED</prop>
+    <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+    <prop key="is*">PROPAGATION_REQUIRED,readOnly</prop>
+   </props>
+  </property>
+ </bean> -->
+ 
+ <!-- 配置 HibernateTemplate -->
+ <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+ <property name="sessionFactory" ref="factory"></property>
+ </bean>
+
+ <bean id="adminService" class="com.linksky.ssh.service.AdminService">
+  <property name="adminDAO">
+   <ref bean="adminDAO"/>
+  </property>
+ </bean>
+
+ <bean id="adminDAO" class="com.linksky.ssh.dao.AdminDAO">
+  <property name="transactionManager"><ref bean="transactionManager" /></property>
+  <property name="hibernateTemplate"><ref local="hibernateTemplate"/></property>
+ </bean>
+
+<bean id="bookService" class="com.linksky.ssh.service.BookService">
+  <property name="bookDAO">
+   <ref bean="bookDAO"/>
+  </property>
+ </bean>
+
+ <bean id="bookDAO" class="com.linksky.ssh.dao.BookDao">
+  <property name="transactionManager"><ref bean="transactionManager" /></property>
+  <property name="hibernateTemplate"><ref local="hibernateTemplate"/></property>
+ </bean>
+ 
+ <bean id="dictionaryService" class="com.linksky.ssh.service.DictionaryService">
+  <property name="dictionaryDao">
+   <ref bean="dictionaryDao"/>
+  </property>
+ </bean>
+
+ <bean id="dictionaryDao" class="com.linksky.ssh.dao.DictionaryDao">
+  <property name="transactionManager"><ref bean="transactionManager" /></property>
+  <property name="hibernateTemplate"><ref local="hibernateTemplate"/></property>
+ </bean>
+ 
+ <bean id="menuService" class="com.linksky.ssh.service.MenuService">
+  <property name="menuDao">
+   <ref bean="menuDao"/>
+  </property>
+ </bean>
+
+ <bean id="menuDao" class="com.linksky.ssh.dao.MenuDao">
+  <property name="transactionManager"><ref bean="transactionManager" /></property>
+  <property name="hibernateTemplate"><ref local="hibernateTemplate"/></property>
+ </bean>
+
+<bean id="vipService" class="com.linksky.ssh.service.VipService">
+  <property name="vipDao">
+   <ref bean="vipDao"/>
+  </property>
+ </bean>
+
+ <bean id="vipDao" class="com.linksky.ssh.dao.VipDao">
+  <property name="transactionManager"><ref bean="transactionManager" /></property>
+  <property name="hibernateTemplate"><ref local="hibernateTemplate"/></property>
+ </bean>
+ 
+ <bean id="borrowRecordDao" class="com.linksky.ssh.dao.BorrowRecordDao">
+  <property name="transactionManager"><ref bean="transactionManager" /></property>
+  <property name="hibernateTemplate"><ref local="hibernateTemplate"/></property>
+ </bean>
+ 
+ 
+</beans>
