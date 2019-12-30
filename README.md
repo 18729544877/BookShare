@@ -17,16 +17,15 @@ action(举例删除book)
     <td>${book.bookAuthor }</td>  
     <td>${book.bookPrice }</td>  
     <td>${book.bookOperate }</td>  
-    <td><a href="book/delete?bookId=${book.bookId }">删除</a></td>  
+    <td><a href="book/delete?bookId=${book.bookId }">删除</a></td>   
   </tr>  
 </c:forEach>  
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&  
 
 2.delete by bookId来删除某一条书籍记录。  
 点击删除--->删除指导id的记录--->查数据库返回所有的书籍：  
-
-<package name="book" namespace="/book" extends="default">  
-<action name="*" class="com.linksky.ssh.action.BookAction"  
+<package name="book" namespace="/book" extends="default">   
+<action name="*" class="com.linksky.ssh.action.BookAction"    
 	method="{1}">  
 	<result name="{1}">{1}.jsp</result>  
 	<result name="addone" type="redirectAction">show</result>  
@@ -37,7 +36,6 @@ action(举例删除book)
 	<result name="updated" type="redirectAction">update</result>  
 </action>  
 </package>  
-  
 struts.xml找到namespace是book,下面是action为*，method是{1}。  
 表示的是acttion与method方法一致。进入action类BookAction:  
 public String delete() {  
