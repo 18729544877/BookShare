@@ -18,13 +18,15 @@
     <td>${book.bookOperate }</td>
     <%--   <td>${book.bookIsbn }</td>
            <td>${book.bookPublisher }</td>
-          <td><fmt:formatDate pattern="yyyy-MM-dd" value="${book.bookReleaseDate }"></fmt:formatDate></td>
+          <td><fmt:formatDate pattern="yyyy-MM-dd" value="${book.bookReleaseDate }">
+	</fmt:formatDate></td>
 
            <td>${book.bookFace}</td> --%>
     <td><a href="book/delete?bookId=${book.bookId }">删除</a></td>
   </tr>
 </c:forEach>
-#####################################################################################
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+##################################################################################
 2.delete by bookId来删除某一条书籍记录。
 点击删除--->删除指导id的记录--->查数据库返回所有的书籍：
 
@@ -42,8 +44,8 @@
 		</action>
 	</package>
   
-  struts.xml找到namespace是book,下面是action为*，method是{1}。表示的是acttion与method方法一致。
-  进入action类BookAction；
+  struts.xml找到namespace是book,下面是action为*，method是{1}。
+  表示的是acttion与method方法一致。进入action类BookAction；
   
   public String delete() {
 	String id =getRequest().getParameter("bookId");
@@ -54,21 +56,23 @@
 执行完了返回的是“deleteone”，然后根据struts.xml里面的result对应的name：
 如果没有匹配<result name="{1}">{1}.jsp</result>就往下面找：如
 <result name="deleteone" type="redirectAction">show</result>
-type为redirectAction表示跳转，将action设置为show,然后去找BookAction类的show方法：
 
+type为redirectAction表示跳转，将action设置为show,然后去找BookAction类
+的show方法：
+代码如下：
 public String show() {
 	List<Book> bookList = bookService.findAllBook();
 	getRequest().setAttribute("bookList", bookList);
 	return "show";
 }
-目的是查出所有的书籍。
-
-返回的是show,刚好匹配
+	
+目的是查出所有的书籍。返回的是show,刚好匹配
 <result name="{1}">{1}.jsp</result>
 下一步直接到show.jsp页面
 这样删除的一条路就走完了。
 页面的表现是：点击某一条数据的删除按钮，这条数据在页面刷新之后就不见了。
-##############################################################################################
+############################################################################
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 3.文件位置说明：
 样式：
 <%@ page language="java" contentType="text/html; charset=UTF-8"
